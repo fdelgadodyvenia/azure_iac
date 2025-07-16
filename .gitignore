@@ -1,0 +1,10 @@
+terraform-azure-infra/env/dev/.terraform.lock.hcl
+terraform-azure-infra/env/dev/.terraform.tfstate.lock.info
+terraform-azure-infra/env/dev/terraform.tfstate
+terraform-azure-infra/env/dev/terraform.tfstate.backup
+terraform-azure-infra/env/dev/tfplan
+terraform-azure-infra/env/dev/.terraform/modules/modules.json
+terraform-azure-infra/env/dev/.terraform/providers/registry.terraform.io/hashicorp/azurerm/4.36.0/linux_amd64/LICENSE.txt
+terraform-azure-infra/env/dev/.terraform/providers/registry.terraform.io/hashicorp/azurerm/4.36.0/linux_amd64/terraform-provider-azurerm_v4.36.0_x5
+terraform-azure-infra/env/dev/.terraform/providers/registry.terraform.io/hashicorp/tls/4.1.0/linux_amd64/LICENSE.txt
+terraform-azure-infra/env/dev/.terraform/providers/registry.terraform.io/hashicorp/tls/4.1.0/linux_amd64/terraform-provider-tls_v4.1.0_x5
