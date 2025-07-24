@@ -1,0 +1,38 @@
+---
+- name: 🔥 Setup ACR and push images
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: 🔑 Login to Azure Container Registry
+      include_role:
+        name: acr
+
+- name: 🚀 Configure Webserver on VM
+  hosts: vm
+  gather_facts: true
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: 📦 Install Docker and deploy web server
+      include_role:
+        name: vm
+
+- name: 🌐 Deploy App to AKS
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: 📦 Deploy Kubernetes manifests
+      include_role:
+        name: aks
+
+  vars:
+    kubeconfig_path: "/home/fdelgado/.kube/aks-config.yaml"
+    acr_name: "{{ lookup('env', 'ACR_NAME') }}"
+    acr_username: "{{ lookup('env', 'ACR_USERNAME') }}"
+    acr_password: "{{ lookup('env', 'ACR_PASSWORD') }}"

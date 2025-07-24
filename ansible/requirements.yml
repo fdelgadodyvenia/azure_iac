@@ -1,0 +1,12 @@
+collections:
+  - name: community.docker
+  - name: community.kubernetes
+  - name: azure.azcollection
+
+python_requirements:
+  - name: requests
+  - name: pyyaml
+  - name: cryptography
+  - name: kubernetes
+  - name: openshift
+  - name: azure-cli

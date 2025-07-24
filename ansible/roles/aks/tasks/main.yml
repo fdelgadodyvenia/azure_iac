@@ -1,0 +1,17 @@
+# roles/aks/tasks/main.yml
+
+- name: 📦 Ensure Kubernetes namespace exists
+  kubernetes.core.k8s:
+    state: present
+    kubeconfig: "{{ kubeconfig_path }}"
+    definition:
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: unir
+
+- name: 🚀 Deploy Kubernetes application manifests
+  kubernetes.core.k8s:
+    state: present
+    kubeconfig: "{{ kubeconfig_path }}"
+    definition: "{{ lookup('template', 'app_template.yml.j2') }}"

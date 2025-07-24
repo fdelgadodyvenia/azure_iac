@@ -1,0 +1,31 @@
+---
+- name: 📦 Update apt cache
+  become: yes
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+
+
+- name: 🐳 Install Docker
+  become: yes
+  apt:
+    name: docker.io
+    state: present
+
+
+- name: 🔑 Login to ACR from VM
+  become: yes 
+  community.docker.docker_login:
+    registry_url: "{{ acr_name }}"
+    username: "{{ acr_username }}"
+    password: "{{ acr_password }}"
+
+- name: 🚀 Run web server container
+  become: yes 
+  community.docker.docker_container:
+    name: webserver
+    image: acrterraformdev148e7708fcf4.azurecr.io/nginx:latest
+    state: started
+    restart_policy: always
+    published_ports:
+      - "80:80"

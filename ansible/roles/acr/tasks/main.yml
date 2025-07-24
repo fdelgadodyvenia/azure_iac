@@ -1,0 +1,32 @@
+---
+- name: 🔑 Login to ACR
+  community.docker.docker_login:
+    registry_url: "{{ acr_name }}"
+    username: "{{ acr_username }}"
+    password: "{{ acr_password }}"
+
+- name: 📦 Pull nginx from Docker Hub
+  community.docker.docker_image:
+    name: nginx:latest
+    source: pull
+
+- name: 📦 Pull redis from Docker Hub
+  community.docker.docker_image:
+    name: redis:6.0.8
+    source: pull
+
+- name: 🏷 Tag nginx for ACR
+  command: >
+    docker tag nginx:latest {{ acr_name }}/nginx:latest
+
+- name: 🏷 Tag redis for ACR
+  command: >
+    docker tag redis:6.0.8 {{ acr_name }}/redis:6.0.8
+
+- name: 🚀 Push nginx to ACR
+  command: >
+    docker push {{ acr_name }}/nginx:latest
+
+- name: 🚀 Push redis to ACR
+  command: >
+    docker push {{ acr_name }}/redis:6.0.8

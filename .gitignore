@@ -8,3 +8,7 @@ terraform-azure-infra/env/dev/.terraform/providers/registry.terraform.io/hashico
 terraform-azure-infra/env/dev/.terraform/providers/registry.terraform.io/hashicorp/azurerm/4.36.0/linux_amd64/terraform-provider-azurerm_v4.36.0_x5
 terraform-azure-infra/env/dev/.terraform/providers/registry.terraform.io/hashicorp/tls/4.1.0/linux_amd64/LICENSE.txt
 terraform-azure-infra/env/dev/.terraform/providers/registry.terraform.io/hashicorp/tls/4.1.0/linux_amd64/terraform-provider-tls_v4.1.0_x5
+ansible/venv
+ansible/.vault_pass
+ansible/secrets.yml
+terraform-azure-infra/env/dev/.terraform
